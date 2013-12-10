@@ -1,4 +1,8 @@
 $(function () {
+    $().toastmessage({
+        position:'middle-center'
+    });
+
     $("#confirm").on("click", function () {
         if ($(this).attr("btype") == "uc") {
             var userCode = $("#uc").val();
@@ -13,7 +17,7 @@ $(function () {
                     }
                 }).error(
                 function () {
-                    //TODO prompt error message
+                    $().toastmessage("showErrorToast","查询数据失败，如果现在是8-24点，请联系管理员。");
                 }
             );
         } else if ($(this).attr("btype") == "pc") {
@@ -25,11 +29,11 @@ $(function () {
                         $("#itemInfo").removeClass("hide");
                         $("#confirm").attr("btype", "item");
                     } else {
-                        //TODO prompt passCode invalid message
+                        $().toastmessage("showWarningToast","邀请码不存在");
                     }
                 }).error(
                 function () {
-                    //TODO prompt error message
+                    $().toastmessage("showErrorToast","邀请码匹配失败，如果现在是8-24点，请联系管理员。");
                 });
         } else if ($(this).attr("btype") == "item") {
             $("#itemInfo").addClass("hide");
@@ -47,7 +51,7 @@ $(function () {
                     window.location.href = "/wishes";
                 }).error(
                 function () {
-                    //TODO prompt error message
+                    $().toastmessage("showErrorToast","提交数据失败，如果现在是8-24点，请联系管理员。");
                 });
         }
     });

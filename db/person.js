@@ -25,10 +25,12 @@ exports.getPerson = function(userCode,callback) {
 }
 
 exports.addPerson = function(passcode,person,callback) {
+    console.log("db/addPerson")
     db.person.update({"passCode":passcode},person,function(err,updated) {
         if(err && !updated) {
             console.log(passcode+" 用户激活失败");
         }
+        console.log("mongojs/updatePerson");
         callback(updated);
     })
 }

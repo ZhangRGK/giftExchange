@@ -1,9 +1,13 @@
 $(function () {
+    $().toastmessage({
+       position:'middle-center'
+    });
+
     $("#share").on("click", function () {
         $.get("/getPassCode", function (data) {
             var array = eval(data);
-            $.each(array, function (index, passcode) {
-                $("pc" + index).val(passcode);
+            $.each(array, function (index, item) {
+                $("#pc" + index).val(item.passCode);
             });
             $("#codeView").removeClass("hide");
         });
@@ -27,9 +31,9 @@ $(function () {
         }
         $.post("/wishes/achieve", {"wishId": $(this).attr("objId")}, function (data) {
             if (data) {
-                //TODO prompt achieve success
+                $().toastmessage("showSuccessToast","已经确认，你的愿望会挂在末尾。")
             } else {
-                //TODO prompt achieve fault
+                $().toastmessage("showErrorToast","确认失败，如果现在是8-24点之间，请联系管理员。");
             }
         });
     });

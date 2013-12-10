@@ -7,8 +7,10 @@ var personDB = require("../db/person");
 exports.checkPerson = function (req, res) {
     var userCode = req.body.userCode;
     personDB.checkUserCode(userCode, function (exist) {
+        if(exist) {
+            req.session.userCode = userCode;
+        }
         res.json(exist);
-
     });
 }
 
@@ -20,9 +22,11 @@ exports.checkPassCode = function (req, res) {
 }
 
 exports.addPerson = function (req, res) {
+    console.log("routes/addPerson")
     personDB.addPerson(req.body.passCode, req.body,function(updated) {
         if(updated) {
             req.session.userCode = req.body.userCode;
         }
+        res.json(updated);
     });
 }

@@ -18,9 +18,10 @@ exports.view = function (req, res) {
 
 exports.getPassCode = function(req,res) {
     var userCode = req.session.userCode;
-    var md5 = crypto.createHash("MD5");
-    var passcode1 = md5.update(userCode).digest('base64');
-    var passcode2 = md5.update(passcode1).digest('base64');
+    var sha1 = crypto.createHash("sha1");
+    var passcode1 = sha1.update(userCode+"").digest("base64");
+    sha1 = crypto.createHash("sha1");
+    var passcode2 = sha1.update(passcode1+"").digest("base64");
     personDB.createPassCode(passcode1,function(saved) {
         if(saved) {
             personDB.createPassCode(passcode2,function(saved) {
@@ -40,7 +41,7 @@ exports.achieve = function (req, res) {
     var id = req.body.wishId;
     var userCode = req.session.userCode;
     wishDB.wishCheck(id, function (acheve) {
-        if (acheve == true) {
+        if (acheve == false) {
             wishDB.achieveWish(id, function (updated) {
                 personDB.getPerson(userCode,function(person) {
                     wishDB.saveNewWish(
