@@ -1,0 +1,51 @@
+doctype html
+html
+    head
+        title=title
+        link(rel="stylesheet",href="/stylesheets/wish.css")
+        script(src="http://code.jquery.com/jquery-1.10.2.min.js")
+        script(src="/javascripts/wish.js")
+    body
+        header
+            if (userCode)
+                #share(title="获取邀请码") #{userCode}
+            else
+                #signIn SignIn
+        #codeView.hide
+            #codePanel 邀请码
+                input(type="text")#pc0
+                input(type="text")#pc1
+        #main
+            #title #{title}
+            #board
+                #rules
+                    ol
+                        li xxx
+                        li yyyy
+                        li zzzz
+                        li aaaaa
+                        li bbbbb
+                #patchNote
+                    dl
+                        dt BUG修复
+                            dd 根本没BUG嘛（因为不能用）
+                        dt 新功能
+                            dd 根本没新功能嘛（因为不能用）
+        #gifts
+            each wish in wishes
+                if(!wish.Achieve)
+                    .gift
+                        .person
+                            a.face(href=wish.person.url target="_blank") #{wish.person.name}
+                        .item
+                            a.url(href=wish.item.url target="_blank") #{wish.item.name}
+                        #bar
+                            #ido(objId=wish._id) Achieve It!
+                else
+                    .packaged
+                    .v
+                    .h
+                    .card
+                        .words #{wish.person.words}
+                        .person
+                            a.face(href=wish.person.url target="_blank") 张锐

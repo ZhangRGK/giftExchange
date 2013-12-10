@@ -1,0 +1,74 @@
+html,body {
+    margin:0;
+    border:0;
+    padding:0;
+    height:100%;
+    width:100%;
+    background-color: #ECE9E9;
+}
+
+input {
+    font-size:20px;
+    line-height:26px;
+    height:26px;
+    font-weight:bold;
+    width:100%;
+    border: 1px solid grey;
+    padding:4px 0px 4px 0px;
+}
+
+.toolbar {
+    position:relative;
+    width:100%;
+}
+
+.button {
+    height:36px;
+    line-height:36px;
+    padding:0px 8px 0px 8px;
+    width:86px;
+    background-color: lawngreen;
+    font-weight: bolder;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top:15px;
+    position: absolute;
+    right:0px;
+}
+
+#panel {
+    width:400px;
+    position:relative;
+    top:20%;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+
+.hide {
+    display:none;
+}
+
+#itemInfo {
+    text-align: center;
+}
+
+#itemInfo img {
+    width:300px;
+    height:300px;
+    position:relative;
+}
+
+#name {
+    display:block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#url {
+    font-size: 14px;
+    height:14px;
+    line-height:14px;
+}

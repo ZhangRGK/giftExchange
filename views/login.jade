@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title=title
+        link(rel="stylesheet",href="/stylesheets/login.css")
+        script(src="http://code.jquery.com/jquery-1.10.2.min.js")
+        script(src="/javascripts/login.js")
+    body
+        #panel
+            #userCode
+                input(type="text",placeholder="这里填用户名。")#uc
+            #passCode.hide
+                input(type="text",placeholder="这里填邀请码。")#pc
+            #itemInfo.hide
+                input(type="text",placeholder="愿望物品的名字填在这里")#name
+                input(type="text",placeholder="愿望物品的URL填在这里")#url
+            #wordsarea.hide
+                textarea(rows="3",cols="54",placeholder="在这里写下一些想说的话吧。")#words
+            .toolbar
+                .button#confirm(btype="uc") Confirm
