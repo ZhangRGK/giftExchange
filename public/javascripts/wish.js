@@ -31,9 +31,8 @@ $(function () {
             return;
         }
         $.post("/wishes/achieve", {"wishId": $(this).attr("objId")}, function (data) {
-            console.log(data);
             if (data) {
-                $().toastmessage("showSuccessToast","已经确认，你的愿望会挂在末尾。")
+                window.location.reload();
             } else {
                 $().toastmessage("showErrorToast","确认失败，如果现在是8-24点之间，请联系管理员。");
             }
@@ -47,7 +46,7 @@ $(function () {
         }
         $.post("/wishes/first").done(function(data) {
             if (data) {
-                $().toastmessage("showSuccessToast","已经确认。")
+                window.location.reload();
             } else {
                 $().toastmessage("showErrorToast","确认失败，如果现在是8-24点之间，请联系管理员。");
             }

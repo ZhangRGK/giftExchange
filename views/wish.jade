@@ -12,7 +12,7 @@ html
             if (userCode)
                 #share(title="获取邀请码") #{userCode}
             else
-                #signIn SignIn
+                #signIn 登录
         #codeView.hide
             #codePanel 邀请码
                 input(type="text")#pc0
@@ -34,7 +34,7 @@ html
         #gifts
             if(wishes.length==0 && userCode)
                 #bar
-                    #firstBlood addFirstGift!
+                    #firstBlood 许第一个愿!
             each wish in wishes
                 if(!wish.Achieve)
                     .gift
@@ -43,12 +43,12 @@ html
                         .item
                             a.url(href=wish.item.url target="_blank") #{wish.item.name}
                         #bar
-                            #ido(objId=wish._id) Achieve It!
+                            #ido(objId=wish._id) 实现它!
                 else
                     .packaged
-                    .v
-                    .h
-                    .card
-                        .words #{wish.person.words}
-                        .person
-                            a.face(href=wish.person.url target="_blank") #{wish.person.name}
+                        .v
+                        .h
+                        .card
+                            .words #{wish.person.words}
+                            .person
+                                a.face(href=wish.person.url target="_blank") #{wish.person.name}

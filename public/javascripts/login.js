@@ -38,7 +38,7 @@ $(function () {
         } else if ($(this).attr("btype") == "item") {
             $("#itemInfo").addClass("hide");
             $("#wordsarea").removeClass("hide");
-            $("#confirm").attr("btype", "words");
+            $("#confirm").attr("btype", "words").text("完成");
         } else if ($(this).attr("btype") == "words") {
             $.post('/addPerson',
                 {"userCode": $("#uc").val(),
