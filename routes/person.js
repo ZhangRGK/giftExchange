@@ -22,7 +22,6 @@ exports.checkPassCode = function (req, res) {
 }
 
 exports.addPerson = function (req, res) {
-    console.log("routes/addPerson")
     personDB.addPerson(req.body.passCode, req.body,function(updated) {
         if(updated) {
             req.session.userCode = req.body.userCode;

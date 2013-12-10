@@ -26,11 +26,12 @@ $(function () {
     });
 
     $("#ido").on("click", function () {
-        if (!$("#share")) {
+        if ($("#share").text()=="") {
             window.location.href = "/login";
             return;
         }
         $.post("/wishes/achieve", {"wishId": $(this).attr("objId")}, function (data) {
+            console.log(data);
             if (data) {
                 $().toastmessage("showSuccessToast","已经确认，你的愿望会挂在末尾。")
             } else {
@@ -40,7 +41,7 @@ $(function () {
     });
 
     $("#firstBlood").on("click",function() {
-        if (!$("#share")) {
+        if ($("#share").text()=="") {
             window.location.href = "/login";
             return;
         }

@@ -4,8 +4,8 @@
 var db = require("./connector").connect();
 
 exports.createPassCode = function(passcode,callback) {
-    db.person.find({"passCode":passcode},function(err,people) {
-        if(!people) {
+    db.person.findOne({"passCode":passcode},function(err,person) {
+        if(!person) {
             db.person.save({"passCode":passcode},function(err,saved) {
                 if (err && !saved) {
                     console.log(passcode + " 的创建失败");
@@ -22,7 +22,7 @@ exports.createPassCode = function(passcode,callback) {
 }
 
 exports.getPerson = function(userCode,callback) {
-    db.person.find({"userCode":userCode},function(err,person) {
+    db.person.findOne({"userCode":userCode},function(err,person) {
         if(err && !person) {
             console.log(userCode + " 用户查找失败");
         } else {
@@ -32,12 +32,10 @@ exports.getPerson = function(userCode,callback) {
 }
 
 exports.addPerson = function(passcode,person,callback) {
-    console.log("db/addPerson")
     db.person.update({"passCode":passcode},person,function(err,updated) {
         if(err && !updated) {
             console.log(passcode+" 用户激活失败");
         }
-        console.log("mongojs/updatePerson");
         callback(updated);
     })
 }

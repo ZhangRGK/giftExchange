@@ -3,6 +3,7 @@
  */
 
 var db = require("./connector").connect();
+var mongojs = require("mongojs");
 
 exports.getWishes = function (callback) {
     db.wish.find(function (err, wishes) {
@@ -24,19 +25,22 @@ exports.saveNewWish = function (wish, callback) {
 }
 
 exports.wishCheck = function(id, callback) {
-    db.wish.find({"_id":"ObjectId("+id+")"},function(err, wish) {
+    db.wish.findOne({"_id":mongojs.ObjectId(id)},function(err, wish) {
+        console.log(wish);
         if(err) {
             console.log("wish Check 数据查询失败");
-        } else if(wish.length){
+        } else if(!wish){
             callback(-1);
         } else {
-            callback(wish.acheve);
+            callback(wish.Achieve);
         }
     });
 }
 
 exports.achieveWish = function (id, callback) {
-    db.wish.update({"_id": "ObjectId("+id+")"}, {$set: {"Achieve": true}}, function (err, updated) {
+    console.log("1");
+    console.log(mongojs.ObjectId);
+    db.wish.update({"_id": mongojs.ObjectId(id)}, {$set: {"Achieve": true}}, function (err, updated) {
         if (!err && updated) {
             console.log(id + " 领取失败");
         }

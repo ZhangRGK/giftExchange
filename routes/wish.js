@@ -40,39 +40,48 @@ exports.addFirst = function(req, res) {
     cache.put("seat",true);
     var userCode = req.session.userCode;
     personDB.getPerson(userCode,function(person) {
-        wishDB.saveNewWish(
-            {
-                "person": {
-                    "name": person.userCode,
-                    "words": person.words
+        if(person) {
+            wishDB.saveNewWish(
+                {
+                    "person": {
+                        "name": person.userCode,
+                        "words": person.words
+                    },
+                    "item": {
+                        "name": person.name,
+                        "url": person.url,
+                        "img": person.img
+                    },
+                    "Achieve": false
                 },
-                "item": {
-                    "name": person.name,
-                    "url": person.url,
-                    "img": person.img
-                },
-                "Achieve": false
-            },
-            function (saved) {
-                res.json(saved||updated);
-                cache.put("seat",false);
-            }
-        );
+                function (saved) {
+                    res.json(saved||updated);
+                    cache.put("seat",false);
+                }
+            );
+        } else {
+            console.log("db/getPerson 没有找到:"+person);
+        }
     });
 }
 
 exports.achieve = function (req, res) {
     var seat = cache.get("seat");
+    console.log(seat);
     if(seat) {
         res.json(-2);
         return
     }
     cache.put("seat",true);
     var id = req.body.wishId;
+    console.log(id);
     var userCode = req.session.userCode;
-    wishDB.wishCheck(id, function (acheve) {
-        if (acheve == false) {
+    console.log(userCode);
+    wishDB.wishCheck(id, function (achieve) {
+        console.log("achieve:"+achieve);
+        if (achieve == false) {
             wishDB.achieveWish(id, function (updated) {
+                console.log("updated:"+updated);
                 personDB.getPerson(userCode,function(person) {
                     wishDB.saveNewWish(
                         {
@@ -88,6 +97,7 @@ exports.achieve = function (req, res) {
                             "Achieve": false
                         },
                         function (saved) {
+                            console.log("saved:"+saved);
                             res.json(saved||updated);
                             cache.put("seat",false);
                         }

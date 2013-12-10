@@ -65,12 +65,20 @@ a:hover {
     height:100%;
 }
 
-#bar {
-
-}
-
 #rules ol {
     margin:0px;
+}
+
+#rules ol li {
+    margin-bottom: 13px;
+}
+
+#patchNote dt {
+    margin-bottom: 15px;
+}
+
+#patchNote dd {
+    margin-bottom: 13px;
 }
 
 #gifts {
