@@ -7,7 +7,6 @@ http://nodejs.org/download/git
 
 ##install packages
 
-###install express,jade
 `npm install`
 
 ##start server
