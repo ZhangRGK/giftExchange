@@ -22,11 +22,7 @@ html
             #board
                 #rules
                     ol
-                        li xxx
-                        li yyyy
-                        li zzzz
-                        li aaaaa
-                        li bbbbb
+                        li
                 #patchNote
                     dl
                         dt BUG修复
@@ -34,6 +30,9 @@ html
                         dt 新功能
                             dd 根本没新功能嘛（因为不能用）
         #gifts
+            if(wishes.length==0 && userCode)
+                #bar
+                    #firstBlood addFirstGift!
             each wish in wishes
                 if(!wish.Achieve)
                     .gift
@@ -50,4 +49,4 @@ html
                     .card
                         .words #{wish.person.words}
                         .person
-                            a.face(href=wish.person.url target="_blank") 张锐
+                            a.face(href=wish.person.url target="_blank") #{wish.person.name}

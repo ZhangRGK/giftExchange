@@ -162,6 +162,19 @@ a:hover {
     margin: 0 auto;
 }
 
+#firstBlood {
+    height:36px;
+    line-height:36px;
+    padding:0px 8px 0px 8px;
+    width:86px;
+    background-color: lawngreen;
+    font-weight: bolder;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
 #codeView {
     position:fixed;
     background-color: rgba(30,30,30,0.4);

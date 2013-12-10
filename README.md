@@ -10,4 +10,4 @@ http://nodejs.org/download/git
 `npm install`
 
 ##start server
-node app.js
+`node app.js`

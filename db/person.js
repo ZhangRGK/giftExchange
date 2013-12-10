@@ -4,13 +4,20 @@
 var db = require("./connector").connect();
 
 exports.createPassCode = function(passcode,callback) {
-    db.person.save({"passCode":passcode},function(err,saved) {
-        if (err && !saved) {
-            console.log(passcode + " 的创建失败");
+    db.person.find({"passCode":passcode},function(err,people) {
+        if(!people) {
+            db.person.save({"passCode":passcode},function(err,saved) {
+                if (err && !saved) {
+                    console.log(passcode + " 的创建失败");
+                } else {
+                    console.log(passcode + " 创建完成");
+                }
+                callback(saved);
+            });
         } else {
-            console.log(passcode + " 创建完成");
+            console.log(passcode + "已经存在");
+            callback(true);
         }
-        callback(saved);
     });
 }
 

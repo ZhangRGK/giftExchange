@@ -31,6 +31,36 @@ exports.getPassCode = function(req,res) {
     });
 };
 
+exports.addFirst = function(req, res) {
+    var seat = cache.get("seat");
+    if(seat) {
+        res.json(-2);
+        return
+    }
+    cache.put("seat",true);
+    var userCode = req.session.userCode;
+    personDB.getPerson(userCode,function(person) {
+        wishDB.saveNewWish(
+            {
+                "person": {
+                    "name": person.userCode,
+                    "words": person.words
+                },
+                "item": {
+                    "name": person.name,
+                    "url": person.url,
+                    "img": person.img
+                },
+                "Achieve": false
+            },
+            function (saved) {
+                res.json(saved||updated);
+                cache.put("seat",false);
+            }
+        );
+    });
+}
+
 exports.achieve = function (req, res) {
     var seat = cache.get("seat");
     if(seat) {

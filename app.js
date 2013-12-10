@@ -39,6 +39,7 @@ app.post("/addPerson",person.addPerson);
 app.get("/wishes", wish.view);
 app.get("/getPassCode",wish.getPassCode);
 app.post("/wishes/achieve",wish.achieve);
+app.post("/wishes/first",wish.addFirst);
 
 http.createServer(app).listen(app.get('port'),'127.0.0.1', function(){
   console.log('Express server listening on port ' + app.get('port'));
