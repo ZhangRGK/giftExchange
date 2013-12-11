@@ -9,14 +9,23 @@ html
         script(src="/javascripts/jquery.toastmessage.js")
     body
         #panel
-            #userCode
-                input(type="text",placeholder="这里填用户名。")#uc
-            #passCode.hide
-                input(type="text",placeholder="这里填邀请码。")#pc
+            #passCode
+                p 首先，请在下边填入你的邀请码:
+                input(type="text",placeholder="邀请码")#pc
+            #userCode.hide
+                p 然后，填入你的识别ID与用户名；
+                p 如果想要变更信息，可以输入和之前不同的用户名哦:
+                input(type="text",placeholder="用户名")#uc
+                p 为了方便别人联系你，请把知乎个人主页的地址填在下面:
+                input(type="text",placeholder="知乎URL")#pu
             #itemInfo.hide
-                input(type="text",placeholder="愿望物品的名字填在这里")#name
-                input(type="text",placeholder="愿望物品的URL填在这里")#url
+                p 在下方填入你希望获得礼物的名字和网购地址;
+                p 这些信息将会显示在你的愿望中:
+                input(type="text",placeholder="愿望物品的名字")#name
+                input(type="text",placeholder="愿望物品的URL")#url
             #wordsarea.hide
-                textarea(rows="3",cols="54",placeholder="在这里写下一些想说的话吧。")#words
+                p 在下方写上一些想说的话吧；
+                p 当别人实现了你的愿望之后，留言里的内容将会变成留言卡，让所有人看到:
+                textarea(rows="3",cols="54",placeholder="留言")#words
             .toolbar
-                .button#confirm(btype="uc") 下一步
+                .button#confirm(btype="pc") 下一步

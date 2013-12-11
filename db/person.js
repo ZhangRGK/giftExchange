@@ -57,12 +57,7 @@ exports.checkPassCode = function(passcode,callback) {
         if(err) {
             console.log("check PassCode 数据查询失败");
         } else if(person.length) {
-            if(person.name) {
-                callback(false);
-                console.log(passcode+" 已经被使用");
-            } else {
-                callback(true);
-            }
+            callback(true);
         } else {
             callback(false);
             console.log(passcode+" 不存在");

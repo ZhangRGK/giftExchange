@@ -72,3 +72,8 @@ input {
     height:14px;
     line-height:14px;
 }
+
+p {
+    font-size:15px;
+    font-weight: bold;
+}

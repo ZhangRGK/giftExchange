@@ -1,30 +1,4 @@
-//create wish
 
-db.wish.insert({
-    "person": {
-        "name":"张锐",
-        "url":"http://www.zhihu.com/people/zhang-rui-01",
-        "img":"http://p4.zhimg.com/9f/b4/9fb4cd4a2_l.jpg",
-        "words":"Yeah!"
-    },
-    "item":{
-        "name":"鸟哥的Linux私房菜谱",
-        "url":"http://item.jd.com/10064429.html",
-        "img":"http://img11.360buyimg.com/n1/g13/M07/05/0F/rBEhU1IIdeQIAAAAAAeR_FmIJB4AAB93QDkf9MAB5IU914.jpg",
-    },
-    "Achieve":false
-});
-
-
-//create person
-
-db.person.insert({
-    "userCode":"张锐",
-    "passCode":"0101010101010101",
-    "img":"http://img11.360buyimg.com/n1/g13/M07/05/0F/rBEhU1IIdeQIAAAAAAeR_FmIJB4AAB93QDkf9MAB5IU914.jpg",
-    "name":"鸟哥的Linux私房菜谱",
-    "url":"http://item.jd.com/10064429.html"
-});
 
 //init data
 

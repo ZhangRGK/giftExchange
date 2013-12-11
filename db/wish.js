@@ -18,7 +18,7 @@ exports.getWishes = function (callback) {
 exports.saveNewWish = function (wish, callback) {
     db.wish.insert(wish, function (err, saved) {
         if (!err && saved) {
-            console.log(wish.person.name + " 的wish已经保存成功");
+            console.log(wish.person.name + " wish已经保存成功");
         }
         callback(saved);
     });
@@ -26,7 +26,6 @@ exports.saveNewWish = function (wish, callback) {
 
 exports.wishCheck = function(id, callback) {
     db.wish.findOne({"_id":mongojs.ObjectId(id)},function(err, wish) {
-        console.log(wish);
         if(err) {
             console.log("wish Check 数据查询失败");
         } else if(!wish){
@@ -38,8 +37,6 @@ exports.wishCheck = function(id, callback) {
 }
 
 exports.achieveWish = function (id, callback) {
-    console.log("1");
-    console.log(mongojs.ObjectId);
     db.wish.update({"_id": mongojs.ObjectId(id)}, {$set: {"Achieve": true}}, function (err, updated) {
         if (!err && updated) {
             console.log(id + " 领取失败");
