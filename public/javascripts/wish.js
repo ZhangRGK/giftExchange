@@ -30,7 +30,8 @@ $(function () {
             window.location.href = "/login";
             return;
         }
-        if($("#share").text() == $(".face").text()) {
+        if($("#share").text() == $("#face").text()) {
+            console.log()
             $().toastmessage("showWarningToast","别实现自己的愿望玩啊……");
             return;
         }
