@@ -1,1 +1,1 @@
-mongo test init.js
+mongo xmas2013 init.js
