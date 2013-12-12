@@ -1,7 +1,0 @@
-
-
-//init data
-
-db.person.insert({
-    "passCode":"000000000000000000000001"
-});
