@@ -22,9 +22,10 @@ html
             #board
                 #rules
                     ol
-                        li 游戏在12月22日截至
-                        li 许愿物品小于100元
-                        li 登录后，点击左上角的名字，可以获得推荐码（每人只有两枚哦）
+                        li 这是交换礼物的游戏；在决定实现别人的愿望之后，自己的愿望也会被别人看到；
+                        li 双击礼物盒可以跳转到物品购买链接；
+                        li 点击留言卡上的名字可以跳转到知乎个人主页地址；
+                        li 登录后，点击左上角的名字，可以获得推荐码（每人两枚）
                 #patchNote
                     dl
                         dt BUG修复
@@ -39,16 +40,16 @@ html
         #gifts
             if(wishes.length==0 && userCode)
                 #bar
-                    #firstBlood 许第一个愿!
+                    #firstBlood 许一个愿
             each wish in wishes
                 if(!wish.Achieve)
                     .gift
                         .person
-                            a#face.face(href=wish.person.url target="_blank") #{wish.person.name}
+                            a#face.face(href= wish.person.url target="_blank") #{wish.person.name}
                         .item
                             a.url(href=wish.item.url target="_blank") #{wish.item.name}
                         #bar
-                            #ido(objId=wish._id) 实现它!
+                            #ido(objId=wish._id) 实现它
                 else
                     .packaged(link=wish.item.url)
                         .v

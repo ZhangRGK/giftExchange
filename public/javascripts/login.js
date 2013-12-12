@@ -67,12 +67,12 @@ $(function () {
                 return;
             }
             $.post('/addPerson',
-                {"userCode": $("#uc").val(),
-                    "passCode": $("#pc").val(),
-                    "personUrl": $("#pu").val(),
-                    "name": $("#name").val(),
-                    "url": $("#url").val(),
-                    "words": $("#words").val()
+                {"userCode": HTMLescape($("#uc").val()),
+                    "passCode": HTMLescape($("#pc").val()),
+                    "personUrl": HTMLescape($("#pu").val()),
+                    "name": HTMLescape($("#name").val()),
+                    "url": HTMLescape($("#url").val()),
+                    "words": HTMLescape($("#words").val())
                 }
             ).done(function () {
                     window.location.href = "/wishes";
@@ -139,4 +139,12 @@ function validateWords(words) {
         return false;
     }
     return true;
+}
+
+// escape html key char
+function HTMLescape(text) {
+    return text.replace(/&/g, '&amp;').
+        replace(/</g, '&lt;').
+        replace(/"/g, '&quot;').
+        replace(/'/g, '&#039;');
 }
