@@ -33,6 +33,7 @@ html
                             dd 修复了登录操作没有提示信息的BUG
                             dd 修复了可以自己实现自己愿望的BUG
                         dt 新功能
+                            dd 感谢噶皮(Gaa-pill)为每一个礼物打包
                             dd 新增修改个人信息功能
                             dd 新增登录提示信息
                             dd 新增双击已经打包好的礼物可以链接到礼物购买页
@@ -45,16 +46,21 @@ html
                 if(!wish.Achieve)
                     .gift
                         .person
-                            a#face.face(href= wish.person.url target="_blank") #{wish.person.name}
+                            a#face.face(href= wish.person.url,target="_blank") #{wish.person.name}
                         .item
-                            a.url(href=wish.item.url target="_blank") #{wish.item.name}
+                            a.url(href=wish.item.url,target="_blank") #{wish.item.name}
                         #bar
                             #ido(objId=wish._id) 实现它
                 else
-                    .packaged(link=wish.item.url)
-                        .v
-                        .h
+                    .packaged(link=wish.item.url,objId=wish._id)
+                        .v.tape
+                        .h.tape
                         .card
                             .words #{wish.person.words}
                             .person
-                                a.face(href=wish.person.url target="_blank") #{wish.person.name}
+                                a.face(href=wish.person.url,target="_blank") #{wish.person.name}
+        footer
+            div
+                特别感谢 gaa-pill 大王 Jooyi
+            div
+                &copy; 真 · 代码宅 · Darc

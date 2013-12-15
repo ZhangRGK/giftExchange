@@ -6,8 +6,25 @@ $(function () {
     $("#confirm").on("click", function () {
         if ($(this).attr("btype") == "pc") {
             var passCode = $("#pc").val();
-            if(!validatePassCode(passCode)) {
+            var userName = $("#login").val();
+            if(!validatePassCode(passCode,userName)) {
                 $("#pc").focus();
+                return;
+            }
+            if(userName) {
+                $.post('/checkPerson', {"userCode": userName}).done(
+                    function (data) {
+                        if(data) {
+                            window.location.href = "/wishes";
+                        } else {
+                            $().toastmessage("showWarningToast","用户不存在");
+                            return;
+                        }
+                    }).error(
+                    function () {
+                        $().toastmessage("showErrorToast","查询数据失败，如果现在是8-24点，请联系管理员。");
+                    }
+                );
                 return;
             }
             $.post('/checkPassCode', {"passCode": passCode }).done(
@@ -85,12 +102,12 @@ $(function () {
 })
 ;
 
-function validatePassCode(passCode) {
-    if(!passCode) {
-        $().toastmessage("showWarningToast","邀请码可不能不填哦");
-        return false;
+function validatePassCode(passCode,userName) {
+    if(passCode || userName) {
+        return true;
     }
-    return true;
+    $().toastmessage("showWarningToast","邀请码或者用户名至少要填一项哦");
+    return false;
 }
 
 function validateUserCode(userCode) {

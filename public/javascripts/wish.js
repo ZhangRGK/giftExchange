@@ -1,4 +1,17 @@
 $(function () {
+    //init gift background
+    var BGArray = ["grid","leopard","redPoint","twill","whitePoint"];
+    var shock = [0,0,0,0,0];
+    $(".packaged").each(function(index,element) {
+        var objId = $(element).attr("objId");
+        var i = objId.substr(3,1).charCodeAt();
+        var r = i%5;
+        shock[r] = shock[r] + 1;
+        r += shock[r];
+        console.log(shock);
+        $(element).addClass(BGArray[r%5]);
+    });
+
     $().toastmessage({
        position:'middle-center'
     });

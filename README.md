@@ -3,7 +3,7 @@ giftExchange
 #deploy
 
 ##install node and npm
-http://nodejs.org/download/git
+http://nodejs.org/download/
 
 ##install packages
 
