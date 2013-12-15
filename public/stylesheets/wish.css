@@ -95,7 +95,6 @@ a:hover {
 }
 
 .packaged {
-    background-color: lightskyblue;
     width:600px;
     height:400px;
     margin-bottom: 20px;
@@ -109,7 +108,9 @@ a:hover {
     width:60px;
     background-color: #ffff4f;
     position:relative;
-    opacity: 0.6;
+    border-width:0px 1px 0px 1px;
+    border-style: solid;
+    border-color: #000;
     left:100px;
 }
 
@@ -118,7 +119,9 @@ a:hover {
     width:100%;
     background-color: #ffff4f;
     position:relative;
-    opacity: 0.6;
+    border-width:1px 0px 1px 0px;
+    border-style: solid;
+    border-color: #000;
     top:-300px;
 }
 
@@ -133,6 +136,10 @@ a:hover {
     -moz-transform: rotate(-20deg);
     -ms-transform: rotate(-20deg);
     -o-transform: rotate(-20deg);
+    border:1px solid #d8d8d8;
+    -moz-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);;
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);;
 }
 
 .words {
@@ -219,4 +226,45 @@ a:hover {
 
 .hide {
     display:none;
+}
+
+.whitePoint {
+    background-image:url(/images/background/whitepoint.png);
+    overflow: hidden;
+}
+
+.redPoint {
+    background-image:url(/images/background/redpoint.png);
+    overflow: hidden;
+}
+
+.redPoint .tape {
+    background-color: dodgerblue;
+}
+
+.grid {
+    background-image:url(/images/background/grid.png);
+    overflow: hidden;
+}
+
+.grid .tape {
+    background-color: orangered;
+}
+
+.leopard {
+    background-image:url(/images/background/leopard.png);
+    overflow: hidden;
+}
+
+.leopard .tape {
+    background-color: whitesmoke;
+}
+
+.twill {
+    background-image:url(/images/background/twill.png);
+    overflow: hidden;
+}
+
+.twill .tape {
+    background-color: lawngreen;
 }

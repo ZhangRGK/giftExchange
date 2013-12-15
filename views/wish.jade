@@ -45,16 +45,16 @@ html
                 if(!wish.Achieve)
                     .gift
                         .person
-                            a#face.face(href= wish.person.url target="_blank") #{wish.person.name}
+                            a#face.face(href= wish.person.url,target="_blank") #{wish.person.name}
                         .item
-                            a.url(href=wish.item.url target="_blank") #{wish.item.name}
+                            a.url(href=wish.item.url,target="_blank") #{wish.item.name}
                         #bar
                             #ido(objId=wish._id) 实现它
                 else
-                    .packaged(link=wish.item.url)
-                        .v
-                        .h
+                    .packaged(link=wish.item.url,objId=wish._id)
+                        .v.tape
+                        .h.tape
                         .card
                             .words #{wish.person.words}
                             .person
-                                a.face(href=wish.person.url target="_blank") #{wish.person.name}
+                                a.face(href=wish.person.url,target="_blank") #{wish.person.name}
