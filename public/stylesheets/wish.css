@@ -268,3 +268,13 @@ a:hover {
 .twill .tape {
     background-color: lawngreen;
 }
+
+footer {
+    border-top:1px solid #888888;
+    text-align: center;
+    padding:30px;
+}
+
+footer div {
+    margin-bottom: 10px;
+}
