@@ -64,3 +64,13 @@ exports.checkPassCode = function(passcode,callback) {
         }
     });
 }
+
+exports.checkMade = function(userCode,callback) {
+    db.person.findOne({"userCode":userCode},function(err,person) {
+        if(err) {
+            console.log("check make 数据查询失败");
+        } else {
+            callback(person.made);
+        }
+    });
+}

@@ -89,7 +89,8 @@ $(function () {
                     "personUrl": HTMLescape($("#pu").val()),
                     "name": HTMLescape($("#name").val()),
                     "url": HTMLescape($("#url").val()),
-                    "words": HTMLescape($("#words").val())
+                    "words": HTMLescape($("#words").val()),
+                    "made":false
                 }
             ).done(function () {
                     window.location.href = "/wishes";
