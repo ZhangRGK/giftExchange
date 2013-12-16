@@ -59,7 +59,6 @@ exports.checkPassCode = function(passcode,callback) {
         } else if(!person) {
             callback(false);
             console.log(passcode+" 不存在");
-
         } else if(person.userCode){
             console.log(passcode+ " 已经被使用")
             callback(-1);
