@@ -12,8 +12,6 @@ $(function () {
         if ($(this).attr("btype") == "pc") {
             $.post('/checkPassCode', {"passCode": passCode }).done(
                 function (data) {
-                    console.log("checkPassCode:"+data);
-                    console.log(data==-1);
                     if (data == false) {
                         $().toastmessage("showWarningToast", "邀请码不存在");
                         return;
@@ -35,12 +33,10 @@ $(function () {
                 $("#uc").focus();
                 return;
             }
-            $.post('/checkPerson', {"userCode": userCode,passCode:passCode}).done(
+            $.post('/checkPerson', {"userCode": userCode, "passCode": passCode}).done(
                 function (data) {
-                    console.log("checkPerson:"+userCode+" "+passCode+" "+data);
-                    console.log(actType);
-                    if(actType == "edit" && data == false){
-                        $().toastmessage("showErrorToast", "邀请码已经被使用喽，请刷新本页并尝试新的邀请码。");
+                    if (actType == "edit" && data == false) {
+                        $().toastmessage("showWarningToast", "邀请码已经被使用喽，请刷新本页并尝试新的邀请码。");
                     } else {
                         $("#userCode").addClass("hide");
                         $("#itemInfo").removeClass("hide");
@@ -72,20 +68,39 @@ $(function () {
                 $("#words").focus();
                 return;
             }
-            $.post('/addPerson',
-                {"userCode": HTMLescape($("#uc").val()),
-                    "passCode": HTMLescape($("#pc").val()),
-                    "personUrl": URLCheck($("#pu").val()),
-                    "name": HTMLescape($("#name").val()),
-                    "url": URLCheck($("#url").val()),
-                    "words": HTMLescape($("#words").val()),
-                    "made": false
-                }
-            ).done(function () {
-                    window.location.href = "/wishes";
+            $.post('/checkPassCode', {"passCode": passCode }).done(
+                function (data) {
+                    if (data == "-1") {
+                        actType = "edit";
+                    }
+                    $.post('/checkPerson', {"userCode": HTMLescape($("#uc").val()), "passCode": HTMLescape($("#pc").val())}).done(
+                        function (data) {
+                            if (actType == "edit" && data == false) {
+                                $().toastmessage("showWarningToast", "这个激活码被人抢注了！刷新一下尝试新的激活码看看。");
+                            } else {
+                                $.post('/addPerson',
+                                    {"userCode": HTMLescape($("#uc").val()),
+                                        "passCode": HTMLescape($("#pc").val()),
+                                        "personUrl": URLCheck($("#pu").val()),
+                                        "name": HTMLescape($("#name").val()),
+                                        "url": URLCheck($("#url").val()),
+                                        "words": HTMLescape($("#words").val()),
+                                        "made": false
+                                    }
+                                ).done(function (data) {
+                                        window.location.href = "/wishes";
+                                    }).error(
+                                    function () {
+                                        $().toastmessage("showErrorToast", "提交数据失败，如果现在是8-24点，请联系管理员。");
+                                    });
+                            }
+                        }).error(
+                        function () {
+                            $().toastmessage("showErrorToast", "查询数据失败，如果现在是8-24点，请联系管理员。");
+                        });
                 }).error(
                 function () {
-                    $().toastmessage("showErrorToast", "提交数据失败，如果现在是8-24点，请联系管理员。");
+                    $().toastmessage("showErrorToast", "邀请码匹配失败，如果现在是8-24点，请联系管理员。");
                 });
         }
     });

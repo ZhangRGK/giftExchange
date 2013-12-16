@@ -35,6 +35,7 @@ app.get("/", wish.view);
 app.get("/login",login.view);
 app.get("/register",login.register);
 app.post("/checkPerson", person.checkPerson);
+app.post("/getPerson", person.getPerson);
 app.post("/checkPassCode", person.checkPassCode);
 app.post("/addPerson",person.addPerson);
 app.get("/wishes", wish.view);

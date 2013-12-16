@@ -9,7 +9,7 @@ $(function () {
             $("#un").focus();
             return;
         }
-        $.post('/checkPerson', {"userCode": userName}).done(
+        $.post('/getPerson', {"userCode": userName}).done(
             function (data) {
                 if (data) {
                     window.location.href = "/wishes";
@@ -24,8 +24,8 @@ $(function () {
         );
     });
 
-    $("#register").on("click", function() {
-       window.location.href="/register";
+    $("#register").on("click", function () {
+        window.location.href = "/register";
     });
 
     function validateUserName(userName) {
