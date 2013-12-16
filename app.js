@@ -33,6 +33,7 @@ if ('development' == app.get('env')) {
 //view
 app.get("/", wish.view);
 app.get("/login",login.view);
+app.get("/register",login.register);
 app.post("/checkPerson", person.checkPerson);
 app.post("/checkPassCode", person.checkPassCode);
 app.post("/addPerson",person.addPerson);
