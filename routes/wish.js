@@ -12,7 +12,7 @@ cache.put("seat", false);
 exports.view = function (req, res) {
     var userCode = req.session.userCode;
     wishDB.getWishes(function (err, wishes) {
-        res.render('wish', { "title": 'MerryChristmas', "userCode": userCode, "wishes": wishes});
+        res.render('wish', { "title": 'Merry Christmas', "userCode": userCode, "wishes": wishes});
     })
 };
 
