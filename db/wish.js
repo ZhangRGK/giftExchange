@@ -20,7 +20,9 @@ exports.saveNewWish = function (wish, callback) {
         if (!err && saved) {
             console.log(wish.person.name + " wish已经保存成功");
         }
-        callback(saved);
+        db.person.update({"userCode":wish.person.name},{$set:{"made":true}},function(err,updated) {
+            callback(saved||updated);
+        });
     });
 }
 
@@ -36,11 +38,13 @@ exports.wishCheck = function(id, callback) {
     });
 }
 
-exports.achieveWish = function (id, callback) {
+exports.achieveWish = function (id,userCode,callback) {
     db.wish.update({"_id": mongojs.ObjectId(id)}, {$set: {"Achieve": true}}, function (err, updated) {
         if (!err && updated) {
             console.log(id + " 领取失败");
         }
-        callback(updated);
+        db.person.update({"userCode":userCode},{$set:{"made":true}},function(err,u) {
+            callback(updated||u);
+        });
     })
 }
