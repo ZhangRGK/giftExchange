@@ -51,7 +51,7 @@ $(function () {
         if(!confirm("每个人只能实现一个愿望哦！你确定要实现的是这个愿望么？")) {
             return;
         }
-        $.post("/wishes/achieve", {"wishId": $(this).attr("objId")}, function (data) {
+        $.post("/wishes/achieve", {"wishId": $(this).attr("objId"),"wishOwner":$("#face").text()}, function (data) {
             if (data == -1 || data == "-1") {
                 $().toastmessage("showWarningToast","这个愿望已经被别人实现了，请刷新一下再看看。");
             } else if(data == -2||data == "-2"){

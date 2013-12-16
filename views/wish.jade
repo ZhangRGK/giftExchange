@@ -9,8 +9,13 @@ html
         script(src="/javascripts/jquery.toastmessage.js")
     body
         header
-            if (userCode)
-                #share(title="获取邀请码") #{userCode}
+            if (person.userCode)
+                #share(title="获取邀请码") #{person.userCode}
+                #trueLove(title="你的真爱")
+                    if(person.wishOwner)
+                        你已经实现了 <a href="#{owner.personUrl}" target="_blank">#{owner.userCode}</a> 的愿望，快把<a href="##{owner.userCode}">礼物</a>买下来送给TA！(双击礼物可以看到愿望)
+                    else
+                        你还没实现愿望，还在等待真基友出现么？
             else
                 #signIn 登录
         #codeView.hide
@@ -53,7 +58,8 @@ html
                         #bar
                             #ido(objId=wish._id) 实现这个愿望
                 else
-                    .packaged(link=wish.item.url,objId=wish._id)
+                    a(name=wish.person.name)
+                    .packaged(link=wish.item.url,objId=wish._id,title="双击打开链接")
                         .v.tape
                         .h.tape
                         .card

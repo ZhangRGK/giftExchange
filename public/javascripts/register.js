@@ -69,9 +69,9 @@ $(function () {
             $.post('/addPerson',
                 {"userCode": HTMLescape($("#uc").val()),
                     "passCode": HTMLescape($("#pc").val()),
-                    "personUrl": HTMLescape($("#pu").val()),
+                    "personUrl": URLCheck($("#pu").val()),
                     "name": HTMLescape($("#name").val()),
-                    "url": HTMLescape($("#url").val()),
+                    "url": URLCheck($("#url").val()),
                     "words": HTMLescape($("#words").val()),
                     "made":false
                 }
@@ -148,4 +148,11 @@ function HTMLescape(text) {
         replace(/</g, '&lt;').
         replace(/"/g, '&quot;').
         replace(/'/g, '&#039;');
+}
+
+function URLCheck(url) {
+    if(url.indexOf("http://")<0) {
+        url = "http://"+url.trim();
+    }
+    return url;
 }
