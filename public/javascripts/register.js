@@ -35,20 +35,6 @@ $(function () {
                 $("#pu").focus();
                 return;
             }
-            $.post('/checkPerson', {"userCode": userCode}).done(
-                function (data) {
-                    if (!data) {
-                        $("#userCode").addClass("hide");
-                        $("#itemInfo").removeClass("hide");
-                        $("#confirm").attr("btype", "item");
-                    } else {
-                        window.location.href = "/wishes";
-                    }
-                }).error(
-                function () {
-                    $().toastmessage("showErrorToast","查询数据失败，如果现在是8-24点，请联系管理员。");
-                }
-            );
         } else if ($(this).attr("btype") == "item") {
             if(!validateItemName($("#name").val())) {
                 $("#name").focus();
