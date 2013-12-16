@@ -6,7 +6,8 @@ var personDB = require("../db/person");
 
 exports.checkPerson = function (req, res) {
     var userCode = req.body.userCode;
-    personDB.checkUserCode(userCode, function (exist) {
+    var passCode = req.body.passCode;
+    personDB.checkUserCode(userCode,passCode, function (exist) {
         if (exist) {
             req.session.userCode = userCode;
         }

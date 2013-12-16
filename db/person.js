@@ -40,11 +40,11 @@ exports.addPerson = function(passcode,person,callback) {
     })
 }
 
-exports.checkUserCode = function(userCode,callback) {
-    db.person.find({"userCode":userCode},function(err,person) {
+exports.checkUserCode = function(userCode,passCode,callback) {
+    db.person.findOne({"userCode":userCode,"passCode":passCode},function(err,person) {
         if(err) {
             console.log("check person数据查询失败:"+err);
-        } else if(person.length) {
+        } else if(person) {
             callback(true);
         } else {
             callback(false);
@@ -53,14 +53,18 @@ exports.checkUserCode = function(userCode,callback) {
 }
 
 exports.checkPassCode = function(passcode,callback) {
-    db.person.find({"passCode":passcode},function(err,person) {
+    db.person.findOne({"passCode":passcode},function(err,person) {
         if(err) {
             console.log("check PassCode 数据查询失败");
-        } else if(person.length) {
-            callback(true);
-        } else {
+        } else if(!person) {
             callback(false);
             console.log(passcode+" 不存在");
+
+        } else if(person.userCode){
+            console.log(passcode+ " 已经被使用")
+            callback(-1);
+        } else {
+            callback(true);
         }
     });
 }
