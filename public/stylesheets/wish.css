@@ -138,7 +138,8 @@ a:hover {
     position:relative;
     top:-360px;
     left:130px;
-    background-color: #FFFFFF;
+    background-image:url(/images/background/card_vine.png);
+    background-repeat: repeat-y;
     width:350px;
     padding:20px;
     -webkit-transform: rotate(-20deg);
