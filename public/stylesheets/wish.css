@@ -2,8 +2,16 @@ html,body{
     margin:0;
     border:0;
     padding:0;
-    background-color: #ECE9E9;
+    background-color: #ecf0f1;
     height:100%;
+    color:#454545;
+}
+a{
+    color:#27ae60;
+}
+a:hover{
+    color:#e74c3c;
+    text-decoration: underline;
 }
 
 header {
@@ -42,7 +50,7 @@ a:hover {
 #title {
     padding: 20px 0px 10px 0px;
     text-align: center;
-    color:gold;
+    color:#e74c3c;
     font-weight:bolder;
     font-size: 50px;
     top:150px;
@@ -54,11 +62,11 @@ a:hover {
     margin:0 auto;
     width:50%;
     height:50%;
-    overflow: scroll;
+    overflow-y: scroll;
     padding: 20px;
     font-size:20px;
     top:150px;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
 }
 
 #board>div {
@@ -92,6 +100,7 @@ a:hover {
     background-color: #FFFFFF;
     padding:20px;
     margin-bottom: 50px;
+    border-radius: 5px;
 }
 
 .packaged {
@@ -129,7 +138,7 @@ a:hover {
     position:relative;
     top:-360px;
     left:130px;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     width:350px;
     padding:20px;
     -webkit-transform: rotate(-20deg);
@@ -165,16 +174,21 @@ a:hover {
 }
 
 #ido {
+    cursor: pointer;
     height:36px;
     line-height:36px;
-    padding:0px 8px 0px 8px;
-    width:86px;
-    background-color: lawngreen;
+    padding: 2px 15px;
+    width:120px;
+    text-align: center;
+    background-color: #2ecc71;
+    color:#FFF;
     font-weight: bolder;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     margin: 0 auto;
+}
+#ido:hover{
+    background-color:#f1c40f;
+    color:#d35400;
 }
 
 #firstBlood {
@@ -182,10 +196,8 @@ a:hover {
     line-height:36px;
     padding:0px 8px 0px 8px;
     width:86px;
-    background-color: lawngreen;
+    background-color: #2ecc71;
     font-weight: bolder;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     margin: 0 auto;
 }
@@ -239,7 +251,7 @@ a:hover {
 }
 
 .redPoint .tape {
-    background-color: dodgerblue;
+    background-color: #3498db;
 }
 
 .grid {
@@ -248,7 +260,7 @@ a:hover {
 }
 
 .grid .tape {
-    background-color: orangered;
+    background-color: #f39c12;
 }
 
 .leopard {
@@ -257,7 +269,7 @@ a:hover {
 }
 
 .leopard .tape {
-    background-color: whitesmoke;
+    background-color: #95a5a6;
 }
 
 .twill {
@@ -266,15 +278,24 @@ a:hover {
 }
 
 .twill .tape {
-    background-color: lawngreen;
+    background-color: #1abc9c;
 }
 
 footer {
-    border-top:1px solid #888888;
+    border-top:1px solid #e74c3c;
     text-align: center;
     padding:30px;
 }
 
 footer div {
     margin-bottom: 10px;
+}
+
+#patchNote{
+    padding: 20px 0;
+    font-size: 12px;
+    color:#999;
+}
+#signIn{
+    cursor:pointer;
 }
