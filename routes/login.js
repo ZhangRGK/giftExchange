@@ -6,3 +6,7 @@ var base = {title: "MerryChristmas"};
 exports.view = function (req, res) {
     res.render('login', base);
 };
+
+exports.register = function(req,res) {
+    res.render("register",base);
+}

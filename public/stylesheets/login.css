@@ -20,6 +20,7 @@ input {
 .toolbar {
     position:relative;
     width:100%;
+    text-align: right;
 }
 
 .button {
@@ -34,8 +35,10 @@ input {
     border-radius: 5px;
     text-align: center;
     margin-top:15px;
-    position: absolute;
-    right:0px;
+    margin-left:20px;
+    position: relative;
+    display:inline-block;
+
 }
 
 #panel {
