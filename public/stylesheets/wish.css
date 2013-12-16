@@ -7,7 +7,7 @@ html,body{
     color:#454545;
 }
 a{
-    color:#2980b9;
+    color:#27ae60;
 }
 a:hover{
     color:#e74c3c;
@@ -62,7 +62,7 @@ a:hover {
     margin:0 auto;
     width:50%;
     height:50%;
-    overflow: scroll;
+    overflow-y: scroll;
     padding: 20px;
     font-size:20px;
     top:150px;
@@ -100,6 +100,7 @@ a:hover {
     background-color: #FFFFFF;
     padding:20px;
     margin-bottom: 50px;
+    border-radius: 5px;
 }
 
 .packaged {
@@ -176,14 +177,18 @@ a:hover {
     cursor: pointer;
     height:36px;
     line-height:36px;
-    padding:0px 8px 0px 8px;
-    width:86px;
+    padding: 2px 15px;
+    width:80px;
+    text-align: center;
     background-color: #2ecc71;
+    color:#f39c12;
     font-weight: bolder;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     margin: 0 auto;
+}
+#idp:hover{
+    background-color:#f1c40f;
+    color:#d35400;
 }
 
 #firstBlood {
@@ -193,8 +198,6 @@ a:hover {
     width:86px;
     background-color: #2ecc71;
     font-weight: bolder;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     margin: 0 auto;
 }
