@@ -6,11 +6,12 @@ var db = require("./connector").connect();
 var mongojs = require("mongojs");
 
 exports.getWishes = function (callback) {
-    db.wish.find(function (err, wishes) {
+    db.wish.find(function (err,wishes) {
         if (err || !wishes) {
-            callback(err, null);
+            console.log("getWishes:查询wishes失败");
+            callback(null);
         } else {
-            callback(null, wishes);
+            callback(wishes);
         }
     });
 }
@@ -38,12 +39,12 @@ exports.wishCheck = function(id, callback) {
     });
 }
 
-exports.achieveWish = function (id,userCode,callback) {
+exports.achieveWish = function (id,wishOwner,userCode,callback) {
     db.wish.update({"_id": mongojs.ObjectId(id)}, {$set: {"Achieve": true}}, function (err, updated) {
         if (!err && updated) {
             console.log(id + " 领取失败");
         }
-        db.person.update({"userCode":userCode},{$set:{"made":true}},function(err,u) {
+        db.person.update({"userCode":userCode},{$set:{"made":true,"wishOwner":wishOwner}},function(err,u) {
             callback(updated||u);
         });
     })

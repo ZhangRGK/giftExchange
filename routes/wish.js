@@ -11,9 +11,13 @@ cache.put("seat", false);
 
 exports.view = function (req, res) {
     var userCode = req.session.userCode;
-    wishDB.getWishes(function (err, wishes) {
-        res.render('wish', { "title": 'Merry Christmas', "userCode": userCode, "wishes": wishes});
-    })
+    personDB.getPerson(userCode,function(person) {
+        personDB.getPerson(person.wishOwner,function(owner) {
+            wishDB.getWishes(function (wishes) {
+                res.render('wish', { "title": 'Merry Christmas',"person":person,"owner":owner, "wishes": wishes});
+            });
+        });
+    });
 };
 
 exports.getPassCode = function (req, res) {
@@ -78,6 +82,7 @@ exports.achieve = function (req, res) {
     cache.put("seat", true);
     var id = req.body.wishId;
     var userCode = req.session.userCode;
+    var wishOwner = req.body.wishOwner;
     console.log("用户:" + userCode + " 占座");
     personDB.checkMade(userCode, function (made) {
         if (made == true) {
@@ -87,8 +92,7 @@ exports.achieve = function (req, res) {
         }
         wishDB.wishCheck(id, function (achieve) {
             if (achieve == false) {
-                wishDB.achieveWish(id, userCode, function (updated) {
-                    console.log("updated:" + updated);
+                wishDB.achieveWish(id,wishOwner, userCode, function (updated) {
                     personDB.getPerson(userCode, function (person) {
                         wishDB.saveNewWish(
                             {
