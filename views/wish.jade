@@ -29,15 +29,15 @@ html
                 #patchNote
                     dl
                         dt BUG修复
-                            dd 修复了并发操作的BUG
-                            dd 修复了登录操作没有提示信息的BUG
                             dd 修复了可以自己实现自己愿望的BUG
+                            dd 修复了每个人可以许多个愿望的BUG
+                            dd 压缩图片
                         dt 新功能
+                            dd 登录与注册功能分开
                             dd 感谢噶皮(Gaa-pill)为每一个礼物打包
                             dd 新增修改个人信息功能
                             dd 新增登录提示信息
                             dd 新增双击已经打包好的礼物可以链接到礼物购买页
-                            dd 新增点击人名可以链接到知乎个人主页
         #gifts
             if(wishes.length==0 && userCode)
                 #bar
