@@ -181,12 +181,12 @@ a:hover {
     width:80px;
     text-align: center;
     background-color: #2ecc71;
-    color:#f39c12;
+    color:#f1c40f;
     font-weight: bolder;
     border-radius: 5px;
     margin: 0 auto;
 }
-#idp:hover{
+#ido:hover{
     background-color:#f1c40f;
     color:#d35400;
 }
