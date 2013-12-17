@@ -4,7 +4,7 @@ $(function () {
     var shock = [0, 0, 0, 0, 0];
     $(".packaged").each(function (index, element) {
         var objId = $(element).attr("objId");
-        var i = objId.substr(3, 1).charCodeAt();
+        var i = objId.substr(objId.length-2, 1).charCodeAt();
         var r = i % 5;
         shock[r] = shock[r] + 1;
         r += shock[r];
