@@ -39,7 +39,12 @@ $(function () {
     });
 
     $("#ido").on("click", function () {
-        $().toastmessage("showWarningToast", "你来晚了，游戏结束了~可是双击礼物箱看看别人的礼物。");
+        var now = new Date();
+        var end_date = new Date(Date.parse('2013/12/24'));
+        if(now > end_date){
+            $().toastmessage("showWarningToast", "你来晚了，游戏结束了~可是双击礼物箱看看别人的礼物。");
+        }
+
         return;
         if ($("#share").text() == "") {
             window.location.href = "/login";
